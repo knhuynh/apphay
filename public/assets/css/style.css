@@ -1,0 +1,117 @@
+body {
+	background-color: #E9E9E9;
+}
+hr {
+	border-top: 1px solid #ccc;
+}
+.clear-padding-right {
+	padding-right: 0px;
+}
+.wrapper {
+	padding-top: 65px;
+}
+.app-item {
+	margin-bottom: 15px;
+}
+.app-item img {
+	width: 100%;
+}
+.app-item a {
+	text-decoration: none;
+}
+.title-play-date {
+	background-color: #fff;
+}
+.app-item a h2 {
+	font-size: 15px;
+	font-weight: bold;
+	color: #333;
+	cursor: pointer;
+	min-height: 63px;
+	margin-bottom: 11px;
+	margin-top: 0px;
+	padding-top: 15px;
+}
+.app-item a h2:hover {
+	color: #337ab7;
+}
+.app-item ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border-top: 1px solid #ddd;
+}
+.app-item ul li {
+	display: inline-block;
+	min-height: 30px;
+	line-height: 30px;
+	font-size: 13px;
+}
+.app-item ul li:last-child {
+	float: right;
+}
+.app-item ul li span {
+	padding-right: 5px;
+}
+.next-prev {
+	line-height: 80px;
+}
+.next-prev button {
+	color: #F2711C;
+	background-color: #fff;
+}
+.next-prev button:hover {
+	color: #FFF;
+	background-color: #F2711C;
+	outline: none;
+}
+
+.player {
+	height: 545px;
+	background-color: #fff;
+	border-top: 2px solid #F2711C;
+}
+.app-relate {
+	height: 545px;
+	background-color: #fff;
+	border-top: 2px solid #F2711C;
+}
+
+.info-comment {
+	margin-top: 15px;
+}
+.info {
+	min-height: 500px;
+	background-color: #fff;
+	border-top: 2px solid #F2711C;
+}
+.comment {
+	margin-top: 15px;
+	min-height: 500px;
+	background-color: #fff;
+	border-top: 2px solid #F2711C;
+}
+
+
+footer ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+footer ul li {
+	display: inline-block;
+	padding-right: 20px;
+}
+footer ul li:last-child {
+	float: right;
+}
+footer ul li a {
+	color: #444;
+	font-weight: bold;
+	text-decoration: none;
+	cursor: pointer;
+}
+footer ul li a:hover {
+	color: #333;
+	text-decoration: none;
+}
