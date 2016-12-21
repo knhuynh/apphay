@@ -183,6 +183,47 @@
             </ul>
           </div>
         </div>
+        <div class="col-md-3 app-item">
+          <a><img src="http://www.appnhe.com/data/images/thumbnail/1113_normal.jpg" class="img-responsive" /></a>
+          <div class="col-md-12 title-play-date">
+            <a><h2>Bao nhiêu người đã cảm nắng bạn trong năm 2016?</h2></a>
+            <ul>
+              <li><span class="glyphicon glyphicon-expand"></span>1,366</li>
+              <li><span class="glyphicon glyphicon-calendar"></span>3 days ago</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3 app-item">
+          <a><img src="http://www.appnhe.com/data/images/thumbnail/47_normal.jpg" class="img-responsive" /></a>
+          <div class="col-md-12 title-play-date">
+            <a><h2>Chọn ĐÚNG hoặc SAI trong 3 nốt nhạc!</h2></a>
+            <ul>
+              <li><span class="glyphicon glyphicon-expand"></span>1,366</li>
+              <li><span class="glyphicon glyphicon-calendar"></span>3 days ago</li>
+            </ul>
+          </div>
+       </div>
+        <div class="col-md-3 app-item">
+          <a><img src="http://www.appnhe.com/data/images/thumbnail/1109_normal.jpg" class="img-responsive" /></a>
+          <div class="col-md-12 title-play-date">
+            <a><h2>Bức ảnh nhiều like nhất năm 2016 của bạn</h2></a>
+            <ul>
+              <li><span class="glyphicon glyphicon-expand"></span>1,366</li>
+              <li><span class="glyphicon glyphicon-calendar"></span>3 days ago</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3 app-item">
+          <a><img src="http://www.appnhe.com/data/images/thumbnail/1099_normal.jpg" class="img-responsive" /></a>
+          <div class="col-md-12 title-play-date">
+            <a><h2>Ai luôn lấy bạn ra làm gương?</h2></a>
+            <ul>
+              <li><span class="glyphicon glyphicon-expand"></span>1,366</li>
+              <li><span class="glyphicon glyphicon-calendar"></span>3 days ago</li>
+            </ul>
+          </div>
+        </div>
+       
         <div class="col-md-12 text-center next-prev">
           <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Quay lại</button>
           <button type="button" class="btn btn-default">Tiếp theo <span class="glyphicon glyphicon-arrow-right"></span></button>
