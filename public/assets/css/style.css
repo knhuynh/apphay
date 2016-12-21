@@ -7,8 +7,45 @@ hr {
 .clear-padding-right {
 	padding-right: 0px;
 }
+.clear-padding {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.navbar-inverse {
+	background-color: #F2711C;
+	border-color: #F2711C;
+}
+.navbar-inverse .navbar-brand {
+	color: #fff;
+}
+.navbar-inverse .navbar-toggle {
+	border-color: #fff;
+}
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+	background-color: #F2711C;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+	border: 0px;
+}
+.carousel {
+	margin-bottom: 0px;
+}
 .wrapper {
 	padding-top: 65px;
+}
+.label-filter {
+	margin-top: 45px;
+	line-height: 80px;
+}
+.label-filter .filter-item {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.label-filter button {
+	width: 100%;
+	height: 40px;
+	overflow: hidden;
+	font-weight: bold;
 }
 .app-item {
 	margin-bottom: 15px;
@@ -52,6 +89,7 @@ hr {
 }
 .app-item ul li span {
 	padding-right: 5px;
+	color: #F2711C;
 }
 .next-prev {
 	line-height: 80px;
@@ -59,13 +97,24 @@ hr {
 .next-prev button {
 	color: #F2711C;
 	background-color: #fff;
+	min-width: 110px;
+	text-align: center;
 }
 .next-prev button:hover {
 	color: #FFF;
 	background-color: #F2711C;
-	outline: none;
+	border-color: #F2711C;
 }
-
+.next-prev button:active {
+	color: #FFF;
+	background-color: #F2711C;
+	border-color: #F2711C;
+}
+.next-prev button:focus {
+	color: #FFF;
+	background-color: #F2711C;
+	border-color: #F2711C;
+}
 .player {
 	height: 545px;
 	background-color: #fff;
@@ -114,4 +163,28 @@ footer ul li a {
 footer ul li a:hover {
 	color: #333;
 	text-decoration: none;
+}
+
+@media (max-width: 766px) {
+	.search {
+		width: 100%;
+	}
+}
+
+@media (max-width: 432px) {
+	.label-filter button {
+		font-size: 0.79em;
+		font-weight: bold;
+		padding: 0px;
+	}
+}
+
+@media (max-width: 521px) {
+	footer ul li {
+		display: inherit;
+		text-align: center;
+	}
+	footer ul li:last-child {
+		float: none;
+	}
 }
