@@ -1,22 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+@extends('app')
 
-    <title>AppHay.com</title>
-
-    <link rel="icon" href="img/mini_icon.png" type="image/x-icon"/>
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <link href="assets/css/carousel.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
-  </head>
-
-  <body>
+@section('content')
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -27,7 +11,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">AppHay</a>
+          <a class="navbar-brand" href="/">AppHay</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
@@ -103,7 +87,22 @@
         </div>
       </div>
       <div class="row">
+      @if ($apps)
+        @foreach ($apps as $app)
         <div class="col-md-3 app-item">
+          <a href="detail/{{ $app->id }}"><img src="{{ $app->image }}" class="img-responsive" /></a>
+          <div class="col-md-12 title-play-date">
+            <a href="detail/{{ $app->id }}"><h2>{{ $app->name }}</h2></a>
+            <ul>
+              <li><span class="glyphicon glyphicon-expand"></span>1,366</li>
+              <li><span class="glyphicon glyphicon-calendar"></span>3 days ago</li>
+            </ul>
+          </div>
+        </div>
+        @endforeach
+      @endif
+
+        <!-- <div class="col-md-3 app-item">
           <a><img src="http://www.appnhe.com/data/images/thumbnail/1113_normal.jpg" class="img-responsive" /></a>
           <div class="col-md-12 title-play-date">
             <a><h2>Bao nhiêu người đã cảm nắng bạn trong năm 2016?</h2></a>
@@ -182,47 +181,7 @@
               <li><span class="glyphicon glyphicon-calendar"></span>3 days ago</li>
             </ul>
           </div>
-        </div>
-        <div class="col-md-3 app-item">
-          <a><img src="http://www.appnhe.com/data/images/thumbnail/1113_normal.jpg" class="img-responsive" /></a>
-          <div class="col-md-12 title-play-date">
-            <a><h2>Bao nhiêu người đã cảm nắng bạn trong năm 2016?</h2></a>
-            <ul>
-              <li><span class="glyphicon glyphicon-expand"></span>1,366</li>
-              <li><span class="glyphicon glyphicon-calendar"></span>3 days ago</li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-3 app-item">
-          <a><img src="http://www.appnhe.com/data/images/thumbnail/47_normal.jpg" class="img-responsive" /></a>
-          <div class="col-md-12 title-play-date">
-            <a><h2>Chọn ĐÚNG hoặc SAI trong 3 nốt nhạc!</h2></a>
-            <ul>
-              <li><span class="glyphicon glyphicon-expand"></span>1,366</li>
-              <li><span class="glyphicon glyphicon-calendar"></span>3 days ago</li>
-            </ul>
-          </div>
-       </div>
-        <div class="col-md-3 app-item">
-          <a><img src="http://www.appnhe.com/data/images/thumbnail/1109_normal.jpg" class="img-responsive" /></a>
-          <div class="col-md-12 title-play-date">
-            <a><h2>Bức ảnh nhiều like nhất năm 2016 của bạn</h2></a>
-            <ul>
-              <li><span class="glyphicon glyphicon-expand"></span>1,366</li>
-              <li><span class="glyphicon glyphicon-calendar"></span>3 days ago</li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-3 app-item">
-          <a><img src="http://www.appnhe.com/data/images/thumbnail/1099_normal.jpg" class="img-responsive" /></a>
-          <div class="col-md-12 title-play-date">
-            <a><h2>Ai luôn lấy bạn ra làm gương?</h2></a>
-            <ul>
-              <li><span class="glyphicon glyphicon-expand"></span>1,366</li>
-              <li><span class="glyphicon glyphicon-calendar"></span>3 days ago</li>
-            </ul>
-          </div>
-        </div>
+        </div> -->
        
         <div class="col-md-12 text-center next-prev">
           <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Quay lại</button>
@@ -241,9 +200,4 @@
       </footer>
     </div>
 
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/ie-emulation-modes-warning.js"></script>
-    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
-</html>
+@stop
