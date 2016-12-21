@@ -47,7 +47,39 @@
           <div class="row">
             <div class="col-md-8 player">Playing app</div>
             <div class="col-md-4 clear-padding-right">
-              <div class="col-md-12 app-relate">Apps relate</div>
+              <div class="col-md-12 app-relate">
+                <div class="title-app-relate">
+                  MUỐN CHƠI HÔNG?
+                </div>
+                <div class="row">
+
+                  <div class="col-md-12 app-relate-item">
+                    <div class="col-md-6 clear-padding">
+                      <a><img src="http://www.appnhe.com/data/images/thumbnail/1114_normal.jpg" class="img-responsive" /></a>
+                    </div>
+                    <div class="col-md-6 title-app clear-padding-right"><a>Gửi lời chúc Noel ý nghĩa đến bạn bè</a></div>
+                  </div>
+                  <div class="col-md-12 app-relate-item">
+                    <div class="col-md-6 clear-padding">
+                      <img src="http://www.appnhe.com/data/images/thumbnail/1113_normal.jpg" class="img-responsive" />
+                    </div>
+                    <div class="col-md-6 title-app clear-padding-right"><a>Bao nhiêu người đã cảm nắng bạn trong năm 2016?</a></div>
+                  </div>
+                  <div class="col-md-12 app-relate-item">
+                    <div class="col-md-6 clear-padding">
+                      <img src="http://www.appnhe.com/data/images/thumbnail/47_normal.jpg" class="img-responsive" />
+                    </div>
+                    <div class="col-md-6 title-app clear-padding-right"><a>Chọn ĐÚNG hoặc SAI trong 3 nốt nhạc!</a></div>
+                  </div>
+                  <div class="col-md-12 app-relate-item">
+                    <div class="col-md-6 clear-padding">
+                      <img src="http://www.appnhe.com/data/images/thumbnail/1099_normal.jpg" class="img-responsive" />
+                    </div>
+                    <div class="col-md-6 title-app clear-padding-right"><a>Ai luôn lấy bạn ra làm gương?</a></div>
+                  </div>
+                  
+                </div>
+              </div>
             </div>
           </div>
         </div>
