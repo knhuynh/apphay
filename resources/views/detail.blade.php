@@ -13,14 +13,34 @@
           </button>
           <a class="navbar-brand" href="/">AppHay</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
-            <button class="btn btn-primary" onclick="myFacebookLogin()"><span style="font-weight:bold; font-size:15px">f</span> Login</button>
-            <div class="form-group">
+        <div id="navbar" class="navbar-collapse collapse ">
+
+          <!-- <form class="navbar-form navbar-right"> -->
+
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 search-panel pull-right">
+                    <div class="ui search">
+                        <div class="ui icon input">
+                            <input class="prompt" type="text" placeholder="Tìm App...">
+                            <i class="search icon doneSearch"></i>
+                        </div>
+                        <div class="results transition hidden"></div>
+                    </div>
+
+                </div>
+            <div class="col-md-2 col-sm-1 hidden-xs user-nav-panel pull-right">
+                    <img class="ui avatar image userAvtar" src="//www.appnhe.com/css/ver2/themes/square-image.png" style="display: none;">
+                    <span class="userName hidden-sm" style="display: none;"></span>
+                    <button class="signin-btn big ui facebook button" style="display: block;" onclick="loginWithFb()">
+                      <i class="facebook icon"></i>
+                      Login
+                    </button>
+                </div>
+
+            <div class="form-group hidden ">
               <input type="text" placeholder="Tìm ứng dụng ..." class="form-control">
             </div>
-            <button type="submit" class="btn btn-success">Search</button>
-          </form>
+            <button type="submit" class="btn btn-success hidden">Search</button>
+          <!-- </form> -->
         </div>
       </div>
     </nav>
@@ -29,11 +49,67 @@
       <div class="container wrapper">
         <div class="col-md-12">
           <div class="row">
-            <div class="col-md-8 player">Playing app</div>
+            <div class="col-md-8 app-player">
+              <div class="player">
+              <div class="MarkDoneBt" id="MarkDoneBt">
+                        <div class="gameContainer">
+                          @if(file_exists(public_path($image)))
+                          <img src="{{URL($image)}}" class="img-responsive">
+                          @endif
+                            <div class="markInfoApp">
+                                <span class="showNameApp question">{{$app->name}}</span>
+                                <div class="short-description">{{$short_description}}</div>
+                                <button ng-if="quiz.sns == info.name" class="facebook" type="button" onclick="startWithLogin()">Continue with Facebook</button>
+                            </div>
+                            <div class="hidden">
+                                <!-- <img class="img-responsive img_mark" src="//www.appnhe.com/css/ver2/themes/mark3.svg"> -->
+                                <div class="markPlayApp" style="display: block;z-index: 1;position: relative;">
+                                    <div class="massive ui fade animated orange button startGame" tabindex="0">
+                                        <div class="hidden content">
+                                            <i class="play icon"></i>
+                                        </div>
+                                        <div class="visible content">
+                                            Continue
+                                        </div>
+                                    </div>
+                                    <h4>{{$app->meta_desc}}</h4>
+                                </div>
+                                <div class="markLogin partScoial" style="z-index: 0; display: none;">
+                                    <div class="loginWithFacebook shareSocialBox shareFb" onclick="loginWithFb()">
+                                        <i></i>
+                                        <span>Đăng Nhập Bằng Facebook!</span>
+                                    </div>
+                                    <h3 style="text-align: center; color: #444;">Một lần và mãi mãi về sau!</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+              {!!$app->code!!}
+
+              <div class="markLoadImg">
+                        <h1>Đang xử lý cmn kết quả, chờ xí ^^!</h1>
+                        <img src="//www.appnhe.com/images/icon/app_load.gif">
+                    </div>
+                    <div class="ui dimmer rcmPlayArea">
+                        <div class="row rcmAppShare"></div>
+                    </div>
+
+
+
+
+              </div>
+              <div class="share-reply hidden">
+                <div class="col-md-6"><button class="btn btn-primary">Share on Facebook</button></div>
+                <div class="col-md-6"></div>
+              </div>
+            </div>
             <div class="col-md-4 clear-padding-right parent-app-relate">
               <div class="col-md-12 app-relate">
                 <div class="title-app-relate">
-                  <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div> 
+                <div class="fb-like" data-href="http://apphay.dev" data-layout="button_count" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+                <div class="clear"></div>
                   <!-- MUỐN CHƠI HÔNG? -->
                 </div>
                 <div class="row">
@@ -43,9 +119,13 @@
                   <div class="row">
                     <div class="col-md-12 app-relate-item">
                       <div class="col-md-6 col-sm-6 clear-padding-right">
-                        <a href="detail/{{ $app->id }}"><img src="{{ $app->image }}" class="img-responsive" /></a>
+                      @if(!empty($app->thumbnail) && file_exists(public_path($app->thumbnail)))
+                      
+                        <a href="{{ URL('detail/'.$app->slug) }}"><img src="{{ URL($app->thumbnail) }}" class="img-responsive" /></a>
+                      
+                      @endif
                       </div>
-                      <div class="col-md-6 col-sm-6 title-app clear-padding-right"><a href="detail/{{ $app->id }}">{{ $app->name }}</a></div>
+                      <div class="col-md-6 col-sm-6 title-app clear-padding-right"><a href="{{ URL('detail/'.$app->slug) }}">{{ $app->name }}</a></div>
                     </div>
                     <div class="clear"></div>
                   </div>
@@ -86,14 +166,20 @@
     </div>
 
     <div class="container">
-      <div class="col-md-12 info-comment">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-8 comment">
+            <div class="fb-comments" data-colorscheme="light" data-numposts="5" data-width="100%"></div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
         <div class="row">
           <div class="col-md-8 info">
             <div class="row">
               <div class="col-md-9 title-info">
-                Gửi lời chúc Noel ý nghĩa đến bạn bè
+                {{$app->name}}
               </div>
-              <div class="col-md-3 total-play">LƯỢT CHƠI: <span>6,345</span></div>
+              <div class="col-md-3 total-play">LƯỢT CHƠI: <span>{{$total_play}}</span></div>
             </div>
             <div class="row">
               <div class="col-md-12">
@@ -105,59 +191,15 @@
             </div>
             <div class="row">
               <div class="col-md-12 desciption">
-                <strong>App Hay</strong> Chúng tôi liên tục phát triển và sáng tạo những ứng dụng trên Facebook giúp cho người dùng giải trí và trải nghiệm những điều thú vị. Các ứng dụng do appnhe.com lên ý tưởng và sáng tạo theo phong cách riêng, đơn giản và rất độc đáo, mang lại cho người dùng trải nghiệm mới lạ khi lướt Facebook. Ngoài ra, ngoài tính giải trí, appnhe.com cũng mang lại những trải nghiệm ứng dụng an toàn hơn cho người dùng Facebook khắp Việt Nam và trên toàn thế giới.<br>
-                <br>
-                Với nền tảng kiến thức và kinh nghiệm đa dạng về xã hội thực tế và mạng xã hội Facebook, appnhe.com tin tưởng luôn mang tới nhiều niềm vui, trải nghiệm thú vị và an toàn cho người dùng Facebook.<br>
-                <br>
-                Bên cạnh đó, trong tương lai gần, appnhe.com luôn hướng tới mục tiêu hỗ trợ cộng đồng tự tạo ra những ứng dụng Facebook hấp dẫn, cập nhật đồng thời giúp cho cộng đồng kiếm được nguồn thu nhập chính đáng dựa trên những ứng dụng, sản phẩm giải trí do chính mình làm ra, dựa trên nền tảng apphay.com.<br>
+                {{$short_description}}
+                {!!$description!!}
               </div>
             </div>
 
-            <div class="row">
-              <div class="col-md-12">
-                <div class="app-relate2">
-                  <div class="col-md-3 app-relate2-item">
-                    <a><img src="http://www.appnhe.com/data/images/thumbnail/1108_normal.jpg" class="img-responsive" /></a>
-                    <div class="title-app-relate2-item"><a>Tổng kết năm 2016 của bạn bằng 4 bức ảnh</a></div>
-                  </div>
-                  <div class="col-md-3 app-relate2-item">
-                    <a><img src="http://www.appnhe.com/data/images/thumbnail/1105_normal.jpg" class="img-responsive" /></a>
-                    <div class="title-app-relate2-item"><a>Linh vật của bạn là gì?</a></div>
-                  </div>
-                  <div class="col-md-3 app-relate2-item">
-                    <a><img src="http://www.appnhe.com/data/images/thumbnail/682_normal.jpg" class="img-responsive" /></a>
-                    <div class="title-app-relate2-item"><a>Thưởng tết năm nay của bạn có gì?</a></div>
-                  </div>
-                  <div class="col-md-3 app-relate2-item">
-                    <a><img src="http://www.appnhe.com/data/images/thumbnail/1089_normal.jpg" class="img-responsive" /></a>
-                    <div class="title-app-relate2-item"><a>Nhìn nhân trung dự đoán vận mệnh</a></div>
-                  </div>
-                  <div class="col-md-3 app-relate2-item">
-                    <a><img src="http://www.appnhe.com/data/images/thumbnail/1100_normal.jpg" class="img-responsive" /></a>
-                    <div class="title-app-relate2-item"><a>Bạn đã bày tỏ cảm xúc bao nhiêu lần suốt năm qua?</a></div>
-                  </div>
-                  <div class="col-md-3 app-relate2-item">
-                    <a><img src="http://www.appnhe.com/data/images/thumbnail/1098_normal.jpg" class="img-responsive" /></a>
-                    <div class="title-app-relate2-item"><a>Ai sẽ ký hợp đồng tình yêu với bạn?</a></div>
-                  </div>
-                  <div class="col-md-3 app-relate2-item">
-                    <a><img src="http://www.appnhe.com/data/images/thumbnail/1086_normal.jpg" class="img-responsive" /></a>
-                    <div class="title-app-relate2-item"><a>Noel này bạn sẽ được nhận quà gì?</a></div>
-                  </div>
-                  <div class="col-md-3 app-relate2-item">
-                    <a><img src="http://www.appnhe.com/data/images/thumbnail/1075_normal.jpg" class="img-responsive" /></a>
-                    <div class="title-app-relate2-item"><a>Ai là định mệnh của đời bạn?</a></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-8 comment">
-            <div class="fb-comments" data-href="http://apphay.com" data-colorscheme="light" data-numposts="5" data-width="100%"></div>
-          </div>
-        </div>
+        
       </div>
       <div class="clear"></div>
 
@@ -171,5 +213,7 @@
         </ul>
       </footer>
     </div>
-
-@stop
+@if(!empty($script))
+<script type="text/javascript" src="{{URL($script)}}"></script>
+@endif
+@endsection

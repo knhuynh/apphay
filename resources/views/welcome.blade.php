@@ -14,12 +14,24 @@
           <a class="navbar-brand" href="/">AppHay</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="text" placeholder="Tìm ứng dụng ..." class="form-control">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 search-panel pull-right">
+                <div class="ui search">
+                    <div class="ui icon input">
+                        <input class="prompt" type="text" placeholder="Tìm App...">
+                        <i class="search icon doneSearch"></i>
+                    </div>
+                    <div class="results transition hidden"></div>
+                </div>
+
             </div>
-            <button type="submit" class="btn btn-success search">Search</button>
-          </form>
+            <div class="col-md-2 col-sm-1 hidden-xs user-nav-panel pull-right">
+                <img class="ui avatar image userAvtar" src="//www.appnhe.com/css/ver2/themes/square-image.png" style="display: none;">
+                <span class="userName hidden-sm" style="display: none;"></span>
+                <button class="signin-btn big ui facebook button" style="display: block;" onclick="loginWithFb()">
+                  <i class="facebook icon"></i>
+                  Login
+                </button>
+            </div>
         </div>
       </div>
     </nav>
@@ -90,9 +102,9 @@
       @if ($apps)
         @foreach ($apps as $app)
         <div class="col-md-3 app-item">
-          <a href="detail/{{ $app->id }}"><img src="{{ $app->image }}" class="img-responsive" /></a>
+          <a href="detail/{{ $app->slug }}"><img src="{{ $app->image }}" class="img-responsive" /></a>
           <div class="col-md-12 title-play-date">
-            <a href="detail/{{ $app->id }}"><h2>{{ $app->name }}</h2></a>
+            <a href="detail/{{ $app->slug }}"><h2>{{ $app->name }}</h2></a>
             <ul>
               <li><span class="glyphicon glyphicon-expand"></span>1,366</li>
               <li><span class="glyphicon glyphicon-calendar"></span>3 days ago</li>
@@ -184,6 +196,7 @@
         </div> -->
        
         <div class="col-md-12 text-center next-prev">
+
           <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Quay lại</button>
           <button type="button" class="btn btn-default">Tiếp theo <span class="glyphicon glyphicon-arrow-right"></span></button>
         </div>
@@ -200,4 +213,4 @@
       </footer>
     </div>
 
-@stop
+@endsection
