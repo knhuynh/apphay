@@ -45,12 +45,6 @@ class HomeController extends Controller
         $apps = App::where('status', '=', App::STATUS_ACTIVE)
         ->take(4)
         ->get();
-        $script = $app->script;
-        $description = $app->description;
-        $short_description = $app->short_description;
-        $slug = $app->slug;
-        $total_play = $app->total_play;
-        $image = $app->image;
-        return view('detail', compact('app', 'description', 'apps', 'script', 'short_description', 'slug', 'total_play', 'image'));
+        return view('detail', compact('app', 'apps'));
     }
 }

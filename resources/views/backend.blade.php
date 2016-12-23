@@ -8,6 +8,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta charset="UTF-8">
     <title>@yield('title') | Apphay</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Bootstrap 3.3.2 -->
     <link href="{{ asset("/bower_components/AdminLTE/bootstrap/css/bootstrap.min.css")}}" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
@@ -20,6 +22,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/alertifyjs/build/css/alertify.min.css')}}">
     <link href="{{ asset("/bower_components/AdminLTE/dist/css/skins/skin-blue.min.css")}}" rel="stylesheet" type="text/css" />
     <!-- jQuery 2.1.3 -->
     <script src="{{ asset("/bower_components/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js")}}"></script>
@@ -68,12 +71,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{ asset("/bower_components/AdminLTE/bootstrap/js/bootstrap.min.js")}}" type="text/javascript"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset("/bower_components/AdminLTE/dist/js/app.min.js")}}" type="text/javascript"></script>
-
-    <script type="text/javascript" src="/js//admin.js"></script>
+    <script type="text/javascript" src="{{asset('assets/alertifyjs/build/alertify.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/admin.js')}}"></script>
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
           Both of these plugins are recommended to enhance the
           user experience -->
-    
+    @include('alerts.index')
   </body>
 </html>

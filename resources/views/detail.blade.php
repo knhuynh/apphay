@@ -53,12 +53,12 @@
               <div class="player">
               <div class="MarkDoneBt" id="MarkDoneBt">
                         <div class="gameContainer">
-                          @if(file_exists(public_path($image)))
-                          <img src="{{URL($image)}}" class="img-responsive">
+                          @if(file_exists(public_path($app->image)))
+                          <img src="{{URL($app->image)}}" class="img-responsive">
                           @endif
                             <div class="markInfoApp">
                                 <span class="showNameApp question">{{$app->name}}</span>
-                                <div class="short-description">{{$short_description}}</div>
+                                <div class="short-description">{{$app->short_description}}</div>
                                 <button ng-if="quiz.sns == info.name" class="facebook" type="button" onclick="startWithLogin()">Continue with Facebook</button>
                             </div>
                             <div class="hidden">
@@ -115,17 +115,17 @@
                 <div class="row">
 
                 @if ($apps)
-                  @foreach ($apps as $app)
+                  @foreach ($apps as $item)
                   <div class="row">
                     <div class="col-md-12 app-relate-item">
                       <div class="col-md-6 col-sm-6 clear-padding-right">
-                      @if(!empty($app->thumbnail) && file_exists(public_path($app->thumbnail)))
+                      @if(!empty($item->thumbnail) && file_exists(public_path($item->thumbnail)))
                       
-                        <a href="{{ URL('detail/'.$app->slug) }}"><img src="{{ URL($app->thumbnail) }}" class="img-responsive" /></a>
+                        <a href="{{ URL('detail/'.$item->slug) }}"><img src="{{ URL($item->thumbnail) }}" class="img-responsive" /></a>
                       
                       @endif
                       </div>
-                      <div class="col-md-6 col-sm-6 title-app clear-padding-right"><a href="{{ URL('detail/'.$app->slug) }}">{{ $app->name }}</a></div>
+                      <div class="col-md-6 col-sm-6 title-app clear-padding-right"><a href="{{ URL('detail/'.$item->slug) }}">{{ $item->name }}</a></div>
                     </div>
                     <div class="clear"></div>
                   </div>
@@ -179,7 +179,7 @@
               <div class="col-md-9 title-info">
                 {{$app->name}}
               </div>
-              <div class="col-md-3 total-play">LƯỢT CHƠI: <span>{{$total_play}}</span></div>
+              <div class="col-md-3 total-play">LƯỢT CHƠI: <span>{{$app->total_play}}</span></div>
             </div>
             <div class="row">
               <div class="col-md-12">
@@ -191,8 +191,8 @@
             </div>
             <div class="row">
               <div class="col-md-12 desciption">
-                {{$short_description}}
-                {!!$description!!}
+                {{$app->short_description}}
+                {!!$app->description!!}
               </div>
             </div>
 
@@ -214,6 +214,6 @@
       </footer>
     </div>
 @if(!empty($script))
-<script type="text/javascript" src="{{URL($script)}}"></script>
+<script type="text/javascript" src="{{URL($app->script)}}"></script>
 @endif
 @endsection

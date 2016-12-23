@@ -104,7 +104,7 @@ class AppController extends Controller {
           ->setCallback(function ($val, $row) {
             
               $item = $row->getSrc();
-              $url = "<a title='Edit' href='" . URL('backend/app/edit/' . $val) . "'><span class='fa fa-pencil'></span></a>&nbsp;&nbsp;<a title='Delete' href='" . URL('backend/app/destroy/' . $val) . "'><span class='fa fa-trash'></span></a>";
+              $url = "<a title='Edit' href='" . URL('backend/app/edit/' . $val) . "'><span class='fa fa-pencil'></span></a>&nbsp;&nbsp;<a title='Delete' onclick=\"return confirm('Are you sure you want to delete this app?')\" href='" . URL('backend/app/destroy/' . $val) . "'><span class='fa fa-trash'></span></a>";
               return $url;
             })
           ->setSortable(false)
@@ -232,9 +232,9 @@ class AppController extends Controller {
       $app->script = 'uploads/js/'.$filename;
     }
     if($app->save()){
-      return redirect('backend/app/edit/'.$app->id)->with('message', 'App was successfully created.');
+      return redirect('backend/app/edit/'.$app->id)->with('msgInfo', 'App was successfully created.');
     }
-    return back()->with('message', 'System error, please try again.');
+    return back()->with('msgError', 'System error, please try again.');
 
 	}
 
@@ -260,7 +260,7 @@ class AppController extends Controller {
 		//
     $app = App::find($id);
     if(!$app){
-      return redirect('backend/apps')->with('message', 'App does not found.');
+      return redirect('backend/apps')->with('msgWarning', 'App does not found.');
     }
     return view('Backend::app-edit', compact('app'));
 	}
@@ -325,9 +325,9 @@ class AppController extends Controller {
       $app->script = 'uploads/js/'.$filename;
     }
     if($app->save()){
-      return back()->with('message', 'App was successfully created.');
+      return back()->with('msgInfo', 'App was successfully created.');
     }
-    return back()->with('message', 'System error, please try again.');
+    return back()->with('msgError', 'System error, please try again.');
 
 	}
 
@@ -340,6 +340,16 @@ class AppController extends Controller {
 	public function destroy($id)
 	{
 		//
+    $app = App::find($id);
+    if(!$id){
+      return back()->with('msgError', 'App does not found.');
+    }
+    if($app->delete()){
+      \File::Delete(public_path($app->image));
+      \File::Delete(public_path($app->thumbnail));
+      return back()->with('msgInfo', 'App was successfully deleted.');
+    }
+    return back()->with('msgError', 'System error, can not delete app.');
 	}
 
 }

@@ -18,14 +18,14 @@
         
           {!! Form::open(array('url' => URL('backend/app/update/'.$app->id), 'method' => 'POST', 'role' => 'form', 'files'=>true)) !!}
           <fieldset class="form-group">
-           <?php echo Form::label('name', 'Name', array('class' => 'control-label col-sm-3'));?>
+           <?php echo Form::label('name', 'Name *', array('class' => 'control-label col-sm-3'));?>
             <div class="col-sm-9">
             <?php echo Form::text('name', old('name', $app->name), array('class'=>'form-control input-lg'));?>
               <span class="label label-danger">{{$errors->first('name')}}</span>
             </div>
           </fieldset>
           <fieldset class="form-group">
-           <?php echo Form::label('slug', 'Slug', array('class' => 'control-label col-sm-3'));?>
+           <?php echo Form::label('slug', 'Slug *', array('class' => 'control-label col-sm-3'));?>
             <div class="col-sm-9">
             <?php echo Form::text('slug', old('Slug', $app->slug), array('class'=>'form-control input-lg'));?>
               <span class="label label-danger">{{$errors->first('slug')}}</span>
@@ -53,21 +53,21 @@
             </div>
           </fieldset>
           <fieldset class="form-group">
-           <?php echo Form::label('description', 'Description', array('class' => 'control-label col-sm-3'));?>
+           <?php echo Form::label('description', 'Description *', array('class' => 'control-label col-sm-3'));?>
             <div class="col-sm-9">
             {{Form::textarea('description', old('description', $app->description), array('class'=>'form-control input-lg'))}}
               <span class="label label-danger">{{$errors->first('description')}}</span>
             </div>
           </fieldset>
           <fieldset class="form-group">
-           <?php echo Form::label('code', 'HTML Code', array('class' => 'control-label col-sm-3'));?>
+           <?php echo Form::label('code', 'HTML Code *', array('class' => 'control-label col-sm-3'));?>
             <div class="col-sm-9">
               {{ Form::textarea('code', old('code', $app->code), array('class' => 'form-control input-lg')) }}
             <span class="label label-danger">{{$errors->first('code')}}</span>
             </div>
           </fieldset>
           <fieldset class="form-group">
-            <?php echo Form::label('status', 'Status', array('class' => 'control-label col-sm-3'));?>
+            <?php echo Form::label('status', 'Status *', array('class' => 'control-label col-sm-3'));?>
             <div class="col-sm-4">
             <?php echo Form::select('status', array('active' => 'Active', 'inactive' => 'Inactive'), old('status', $app->status), array('class'=>'form-control input-lg'));?>
               <span class="label label-danger">{{$errors->first('status')}}</span>
